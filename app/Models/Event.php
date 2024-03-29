@@ -8,11 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 
-    'description' ,
+    protected $fillable = [
+    'title', 
+    'description',
      'date' ,
       'location' ,
-       'skills' ,
-        'user_id'];
+      'type',
+       'competences' ,
+        'user_id',
+    ];
     
+
+ 
+
+public function organisator()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+public function postulations()
+{
+    return $this->hasMany(Postulation::class, 'event_id');
+}   
 }

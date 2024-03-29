@@ -22,7 +22,19 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'role',
         'phone',
+        'status',
+        // 'rating_status',
+
     ];
+    
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+    public function postulation()
+    {
+        return $this->hasMany(Postulation::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
